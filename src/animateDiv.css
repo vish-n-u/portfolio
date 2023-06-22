@@ -1,0 +1,7 @@
+.animated-div {
+    transition: transform 3s ease;
+  }
+  
+  .up {
+    transform: translateY(+50px);
+  }

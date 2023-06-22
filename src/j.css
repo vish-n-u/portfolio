@@ -1,0 +1,115 @@
+.fill-red{
+    color: red !important;
+    fill: red !important;
+    background: rgba(217, 217, 217, 0.1);
+    display: inline-flex;
+    border-radius: 50%;
+    margin-right: 6px;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    border: 1px solid rgba(255, 255, 255, 0.5)
+    
+}
+.fill-redH{
+    filter: brightness(0) saturate(100%) invert(0%) sepia(7%) saturate(98%) hue-rotate(346deg) brightness(95%) contrast(86%);
+    background-color: brown;
+ 
+    cursor: grab;
+}
+
+svg:hover{
+fill:red
+}
+
+
+
+@keyframes gradientAnimation {
+    0% {
+      background-position: top left;
+    }
+    100% {
+      background-position: bottom right;
+    }
+  }
+  
+  .animate-gradient {
+    animation: gradientAnimation 3s linear infinite;
+  }
+  
+
+.gradient-button {
+    background-color: #000;
+    position: relative;
+    overflow: hidden;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+.gradient-button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    background-image: linear-gradient(to bottom right, #e3a7e4, #998ab7,#0c0220);
+    z-index: 1000;
+    transition: opacity 0.5s ease-in-out;
+    ;
+  }
+
+.gradient-button:hover::before {
+    opacity: 0.7;
+    transition-delay: 0.2s; /* Delay the transition to create a smoother effect */
+  }
+
+  .image-container {
+    position: relative;
+    
+    border-radius: 1.8rem;
+   
+    overflow: hidden;
+  }
+
+  .image-container:hover .overlay {
+    opacity: 0.9;
+  }
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 288px;
+    background: linear-gradient(to bottom right, #4f46e5, #9057ff);
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+
+  .image {
+    width: 100%;
+    height: 100%;
+    border-radius: 1.8rem;
+  }
+
+  .transition-alls {
+    transition-property: all;
+    transition-duration: 0.5s;
+    transition-timing-function: ease;
+  }
+  
+  .translate-y-0 {
+    transform: translateY(0);
+  }
+  
+  .translate-y-fulls {
+    transform: translateY(100%);
+  }
+
+
+
