@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import contactMe from "./assets/images/contactme.svg";
+import { emailPassword } from "./config";
 
 const ContactMe = () => {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [contactNo, setContactNo] = useState("");
+  const [body, setBody] = useState("");
   return (
     <div
       id="contactMe"
@@ -19,11 +25,13 @@ const ContactMe = () => {
         <div id="form" className="flex flex-col  w-full ">
           <div className="flex flex-col lg:flex-row md:flex-row    my-1 w-full">
             <input
+              onChange={(e) => setFirstName(e.target.value)}
               placeholder="First Name"
               type="text"
               className="bg-blend-saturation my-2 md:my-0 self-center lg:my-0 bg-white/20 border text-lg px-4 mx-1 border-white h-16  lg:w-[40%] md:w-[45%] w-1/2 min-w-[300px] rounded-3xl focus:bg-white ease-in transition-colors duration-500 text-white focus:text-black "
             />
             <input
+              onChange={(e) => setLastName(e.target.value)}
               placeholder="Last Name"
               type="text"
               className="bg-white/20 text-lg my-2 md:my-0 self-center  lg:my-0  focus:bg-white/100 border px-4 mx-1 border-white h-16  lg:w-[40%] md:w-[45%] w-1/2 min-w-[300px] rounded-3xl ease-out transition-colors duration-500 text-white focus:text-black"
@@ -31,17 +39,20 @@ const ContactMe = () => {
           </div>
           <div className="flex flex-col lg:flex-row md:flex-row my-1  w-full">
             <input
+              onChange={(e) => setEmail(e.target.value)}
               placeholder="Email-Id"
               type="email"
               className="bg-white/20 text-lg my-2 md:my-0  self-center lg:my-0 focus:bg-white/100 px-4 border mx-1 border-white h-16 lg:w-[40%] md:w-[45%] w-1/2 min-w-[300px] rounded-3xl ease-in-out transition-colors duration-500 text-white focus:text-black"
             />
             <input
+              onChange={(e) => setContactNo(e.target.value)}
               placeholder="contactNo"
-              type="tel"
+              type="text"
               className="bg-white/20  text-lg my-2 md:my-0 self-center lg:my-0 focus:bg-white/100 px-4 border mx-1 border-white h-16 lg:w-[40%] md:w-[45%] w-1/2 min-w-[300px] rounded-3xl ease-linear transition-colors duration-500 text-white focus:text-black"
             />
           </div>
           <textarea
+            onChange={(e) => setBody(e.target.value)}
             type="text"
             className="lg:w-[80%] md:w-[90%] min-w-[300px] w-[55%] self-center lg:self-auto   text-white focus:text-black pt-10 px-5 text-lg items-start align-top content-start justify-start border focus:bg-white bg-white/20 border-white  h-64 ml-2 ease-linear transition-colors duration-500 rounded-2xl mt-2"
           />
@@ -51,15 +62,21 @@ const ContactMe = () => {
           className="self-start m-3 text-base p-3 bg-black w-36 lg:ml-0 md:ml-0 ml-8  text-white font-semibold hover:bg-white hover:text-black active:bg-rose-400 active:duration-0 transition duration-500"
           onClick={() => {
             console.log("sending mail");
-            // window.Email.send({
-            //   Host: "smtp.elasticemail.com",
-            //   Username: "rapidosh77@outlook.co",
-            //   Password: "218B2E52C5BD36638FAF2BA8E06F2687A399",
-            //   To: "vishnuna26@gmail.com",
-            //   From: "rapidosh77@outlook.com",
-            //   Subject: "This is the subject",
-            //   Body: "And this is the body",
-            // }).then((message) => alert(message));
+            window.Email.send({
+              Host: "smtp.elasticemail.com",
+              Username: "rapidosh77@outlook.co",
+              Password: emailPassword,
+              To: "vishnuna26@gmail.com",
+              From: "rapidosh77@outlook.com",
+              Subject: "Email from Portfolio",
+              Body: {
+                firstName,
+                lastName,
+                email,
+                contactMe,
+                body,
+              },
+            }).then((message) => alert(message));
           }}
         >
           Send Email

@@ -17,6 +17,8 @@ import portfolioImg from "./assets/images/projectsImages/portfolioImg.JPG";
 import youtubeImg from "./assets/images/projectsImages/youtube.png";
 import backendImg from "./assets/images/projectsImages/backend.jpg";
 
+export const emailPassword = process.env.REACT_APP_EmailPassword;
+
 export const logo = "Portfolio";
 // Add the list of connections
 export const connectionArr = [
