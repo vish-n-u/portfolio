@@ -1,5 +1,5 @@
 import React from "react";
-import { skills } from "./config";
+import { skills, skillsTagline } from "./config";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
@@ -32,10 +32,7 @@ const ResponsiveCarousel = ({ skills }) => {
         className=" lg:max-w-[50%] md:max-w-[70%] max-w-[90%] p-10 bg-stone-900/90 rounded-[50px] text-white lg:relative lg:-top-64 "
       >
         <h1 className="text-3xl font-semibold mb-5">Skills</h1>
-        <h1 className="text-lg opacity-70 mb-8">
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry.
-        </h1>
+        <h1 className="text-lg opacity-70 mb-8">{skillsTagline}</h1>
         <Carousel
           autoPlay={true}
           infiniteLoop={true}
@@ -46,7 +43,7 @@ const ResponsiveCarousel = ({ skills }) => {
             hasPrev && (
               <button
                 type="button"
-                className="carousel-arrow carousel-arrow-prev"
+                className="carousel-arrow carousel-arrow-prev p-2"
                 onClick={onClickHandler}
               >
                 Previous
@@ -57,7 +54,7 @@ const ResponsiveCarousel = ({ skills }) => {
             hasNext && (
               <button
                 type="button"
-                className="carousel-arrow carousel-arrow-next"
+                className="carousel-arrow carousel-arrow-next p-2 cursor-pointer"
                 onClick={onClickHandler}
               >
                 Next

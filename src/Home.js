@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import HeaderImg from "./assets/images/header-img.svg";
 
 import "./animateDiv.css";
-import { myself } from "./config";
-import { userName } from "./config";
+import { myself, aboutMe, userName } from "./config";
 
 const Home = () => {
   const [isUp, setIsUp] = useState(false);
@@ -51,21 +50,15 @@ const Home = () => {
     >
       <div className="flex flex-col justify-center items-start md:my-24 lg:w-1/2">
         <h1 className="p-2 border  border-violet-800 bg-gradient-to-r from-fuchsia-800/40 via-indigo-500/40 to-blue-800/40 text-white font-bold py-2 px-5">
-          <span className="opacity-100 text-xl font-semibold">
+          <span className="opacity-100 text-xl  font-semibold">
             Welcome to my Portfolio
           </span>
         </h1>
-        <h1 className="text-4xl font-bold text-white">
+        <h1 className="text-4xl font-bold lg:mt-4 md:mt-4 mt-2 text-white">
           I am {userName + "      "}
           <span>{myself[myselfIndex].slice(0, myselfTextIndex)}</span>
         </h1>
-        <h1 className="text-lg text-white mt-5">
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
-          since the 1500s, when an unknown printer took a galley of type and
-          scrambled it to make a type specimen book. It has survived not only
-          five centuries, but also the leap into electronic
-        </h1>
+        <h1 className="text-lg text-white mt-5">{aboutMe}</h1>
       </div>
       <img
         src={HeaderImg}

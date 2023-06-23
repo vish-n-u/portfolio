@@ -3,45 +3,6 @@ import { useState } from "react";
 import { projects } from "./config";
 import "./j.css";
 
-// const CreateButtons = () => {
-//   const [percentage, setPercentage] = useState(Math.round(100 / arr.length));
-
-//   console.log(percentage);
-//   return (
-//     <div className="w-screen h-screen flex justify-center items-center align-middle content-center">
-//       <div className="w-1/2 flex justify-center items-center">
-//         {arr.map((val, index) => {
-//           return (
-//             <button
-//               className={`min-w-[${percentage}]  h-12 border w-[${percentage}] ${
-//                 index == 0
-//                   ? "rounded-l-full"
-//                   : index == arr.length - 1
-//                   ? "rounded-r-full"
-//                   : ""
-//               }  align-middle inline-flex items-center justify-center overflow-hidden relative font-medium transition-all bg-white rounded hover:bg-white group`}
-//             >
-//               <span
-//                 className={`min-w-[500px] h-20 rounded bg-red-100/100 relative bottom-0 left-0 translate-x-full ease-out duration-500 transition-all translate-y-full  group-hover:ml-0 group-hover:mb-32 group-hover:translate-x-0`}
-//               ></span>
-//               <span className="relative self-center w-full flex justify-center  text-lg text-black transition-colors duration-300 ease-in-out group-hover:text-white">
-//                 val
-//               </span>
-//             </button>
-//           );
-//         })}
-//       </div>
-//     </div>
-//   );
-// };
-// const Projects1 = () => {
-//   return (
-//     <div className="bg-black/100">
-//       <CreateButtons />
-//     </div>
-//   );
-// };
-
 const ColorChangingButton = () => {
   const arr = Object.keys(projects);
   const percentage = Math.round(100 / arr.length) + "%";
@@ -96,7 +57,7 @@ const ColorChangingButton = () => {
                     console.log(position, Object.keys(obj.available).length);
                     return (
                       <a
-                        href="https://www.google.com/"
+                        href={obj.available[val]}
                         target="_blank"
                         rel="noopener noreferrer"
                         key={val}
@@ -106,6 +67,9 @@ const ColorChangingButton = () => {
                       </a>
                     );
                   })}
+                  <h1 className="absolute bottom-0  text-black font-semibold text-xl transition-all  duration-500 ease-in-out transform translate-y-full group-hover:translate-y-[-10%] ">
+                    {obj.name}
+                  </h1>
                 </div>
               </div>
             </>
@@ -118,7 +82,10 @@ const ColorChangingButton = () => {
 
 const Projects = () => {
   return (
-    <div className="flex relative -top-64 h-fit  items-center flex-wrap">
+    <div
+      id="projects"
+      className="flex relative -top-64 h-fit  items-center flex-wrap"
+    >
       <ColorChangingButton />
     </div>
   );

@@ -2,6 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
+import Email from "./contactMe";
+import AnimatedDiv from "./trial";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import reportWebVitals from "./reportWebVitals";
 
@@ -9,6 +11,10 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+  },
+  {
+    path: "/trial",
+    element: <AnimatedDiv />,
   },
 ]);
 const root = ReactDOM.createRoot(document.getElementById("root"));
