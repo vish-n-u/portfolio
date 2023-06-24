@@ -86,7 +86,7 @@ fill:red
     left: 0;
     width: 100%;
     height: 288px;
-    background: linear-gradient(to bottom right, #4f46e5, #9057ff);
+    background: linear-gradient(to bottom right, #e631c4,#9329da, #580fe9);
     opacity: 0;
     transition: opacity 0.5s ease-in-out;
   }
