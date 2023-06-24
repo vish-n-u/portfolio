@@ -22,8 +22,8 @@ export const emailPassword = process.env.REACT_APP_EmailPassword;
 export const logo = "Portfolio";
 // Add the list of connections
 export const connectionArr = [
-  [Linkedin, "https://www.linkedin.com/in/vishnu-nair-439472204/"],
-  [leetcode, "https://leetcode.com/vishnuna26/"],
+  [Linkedin, "https://www.linkedin.com/in/vishnu-nair-439472204/", "linkedin"],
+  [leetcode, "https://leetcode.com/vishnuna26/", "leetcode"],
 ];
 export const myself = ["A software developer", "A MERN stack developer"];
 export const userName = "Vishnu Nair";

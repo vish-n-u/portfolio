@@ -140,7 +140,7 @@ const NavBar = () => {
                 {connectionArr.map((val) => {
                   return (
                     <a
-                      key={val[0]}
+                      key={val[2]}
                       href={val[1]}
                       target="_blank"
                       className="w-16 h-11 bg-gray-200/100   hover:border hover:border-white  flex items-center mt-3 justify-center rounded-full mr-2 hover:bg-transparent hover:text-white  hover:fill-white transition-colors duration-500"
@@ -228,7 +228,7 @@ const NavBar = () => {
                 <div className="flex mx-5">
                   {connectionArr.map((val) => (
                     <a
-                      key={val[0]}
+                      key={val[2]}
                       href={val[1]}
                       target="_blank"
                       className="w-10 h-10 bg-white   hover:border hover:border-white  flex items-center mt-3 justify-center rounded-full mr-2 hover:bg-transparent hover:text-white  hover:fill-white transition-colors duration-300"

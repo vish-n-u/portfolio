@@ -2,11 +2,13 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
-import Email from "./contactMe";
+
 import AnimatedDiv from "./trial";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import reportWebVitals from "./reportWebVitals";
-
+if (process.env.NODE_ENV !== "development") {
+  console.log = () => {};
+}
 const router = createBrowserRouter([
   {
     path: "/",
