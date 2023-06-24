@@ -8,6 +8,7 @@ const ContactMe = () => {
   const [email, setEmail] = useState("");
   const [contactNo, setContactNo] = useState("");
   const [body, setBody] = useState("");
+  console.log("emailPassword---", emailPassword);
   return (
     <div
       id="contactMe"

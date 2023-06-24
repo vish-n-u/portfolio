@@ -45,6 +45,7 @@ const ColorChangingButton = () => {
           return (
             <>
               <div
+                key={obj.name}
                 id="main"
                 className="image-container group m-4 lg:min-w-[400px] lg:w-1/4 md:w-1/3 lg:max-w-[450px] max-w-[300px] aspect-[7/5] relative"
               >
