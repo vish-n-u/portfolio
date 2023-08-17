@@ -16,6 +16,7 @@ import swiggyImg from "./assets/images/projectsImages/swiggyCloneImg.JPG";
 import portfolioImg from "./assets/images/projectsImages/portfolioImg.JPG";
 import youtubeImg from "./assets/images/projectsImages/youtube.png";
 import backendImg from "./assets/images/projectsImages/backend.jpg";
+import chatAppImg from "./assets/images/projectsImages/chatApp.PNG"
 
 export const emailPassword = process.env.REACT_APP_EmailPassword;
 
@@ -100,5 +101,15 @@ export const projects = {
         Live: "https://main--deluxe-cuchufli-f03acb.netlify.app/",
       },
     },
+    {
+      name:"Chat Application",
+      alt:"chatApp.png"
+    ,
+    available:{
+      Code:"https://github.com/vish-n-u/portfolio",
+      Live:"https://cerulean-puffpuff-0bd317.netlify.app/",
+      Video:"https://youtu.be/rcnquCpQdHc"
+    }
+  }
   ],
 };
