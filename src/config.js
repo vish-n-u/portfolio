@@ -103,7 +103,8 @@ export const projects = {
     },
     {
       name:"Chat Application",
-      alt:"chatApp.png"
+      alt:"chatApp.png",
+      image:chatAppImg
     ,
     available:{
       Code:"https://github.com/vish-n-u/portfolio",
