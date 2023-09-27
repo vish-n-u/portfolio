@@ -17,7 +17,7 @@ import portfolioImg from "./assets/images/projectsImages/portfolioImg.JPG";
 import youtubeImg from "./assets/images/projectsImages/youtube.png";
 import backendImg from "./assets/images/projectsImages/backend.jpg";
 import chatAppImg from "./assets/images/projectsImages/chatApp.PNG"
-import excelCloneImg from "./assets/images/projectsImages/excel-clone.PNG"
+import excelCloneImg from "./assets/images/projectsImages/excel-cloneImg.PNG"
 
 export const emailPassword = process.env.REACT_APP_EmailPassword;
 
