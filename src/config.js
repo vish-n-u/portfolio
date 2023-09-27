@@ -17,6 +17,7 @@ import portfolioImg from "./assets/images/projectsImages/portfolioImg.JPG";
 import youtubeImg from "./assets/images/projectsImages/youtube.png";
 import backendImg from "./assets/images/projectsImages/backend.jpg";
 import chatAppImg from "./assets/images/projectsImages/chatApp.PNG"
+import excelCloneImg from "./assets/images/projectsImages/excel-clone.PNG"
 
 export const emailPassword = process.env.REACT_APP_EmailPassword;
 
@@ -51,6 +52,14 @@ export const projects = {
       available: {
         Code: "https://github.com/vish-n-u/youtubeClone",
         Live: "https://teal-muffin-4b5eff.netlify.app/",
+      },
+    },{
+      image : excelCloneImg,
+      name:"ExcelClone",
+      alt:"excel.png",
+      available:{
+        Code:"https://github.com/vish-n-u/Excel-clone-",
+        Live:"https://excel-clone12.netlify.app/"
       },
     },
     {
