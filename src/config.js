@@ -12,8 +12,9 @@ import jsLogo from "./assets/images/skillsImages/js.png";
 import html5Logo from "./assets/images/skillsImages/html5.png";
 import cssLogo from "./assets/images/skillsImages/css.png";
 import tailwindLogo from "./assets/images/skillsImages/tailwindcss.png";
+import typescriptLogo from "./assets/images/skillsImages/typescript.png";
 import swiggyImg from "./assets/images/projectsImages/swiggyCloneImg.JPG";
-import portfolioImg from "./assets/images/projectsImages/portfolioImg.JPG";
+import notepadImg from "./assets/images/projectsImages/notepad.PNG";
 import youtubeImg from "./assets/images/projectsImages/youtube.png";
 import backendImg from "./assets/images/projectsImages/backend.jpg";
 import chatAppImg from "./assets/images/projectsImages/chatApp.PNG"
@@ -24,10 +25,10 @@ export const emailPassword = process.env.REACT_APP_EmailPassword;
 export const logo = "Portfolio";
 // Add the list of connections
 export const connectionArr = [
-  [Linkedin, "https://www.linkedin.com/in/vishnu-nair-439472204/", "linkedin"],
+  [Linkedin, "https://www.linkedin.com/in/vishnu-nair-%F0%9F%9B%A9%EF%B8%8F-439472204/", "linkedin"],
   [leetcode, "https://leetcode.com/vishnuna26/", "leetcode"],
 ];
-export const myself = ["A software developer", "A MERN stack developer"];
+export const myself = ["A Software Developer", "A MERN stack developer"];
 export const userName = "Vishnu Nair";
 export const aboutMe = `Passionate and innovative full-stack software developer with experience in front-end and back-end technologies. Thrives on creating user-friendly applications and enjoys collaborating in a team environment. Eager to learn and make a meaningful impact. Let's build amazing things together! 🚀`;
 export const skillsTagline = `Empowering Innovation with Expertise: Full-Stack Developer |
@@ -41,6 +42,7 @@ export const skills = [
   { image: html5Logo, alt: "html5Logo" },
   { image: tailwindLogo, alt: "tailwindLogo" },
   { image: cssLogo, alt: "cssLogo" },
+  {image: typescriptLogo, alt: "TypeScriptLogo" },
 ];
 
 export const projects = {
@@ -63,13 +65,12 @@ export const projects = {
       },
     },
     {
-      image: portfolioImg,
-      name: "Portfolio-App",
-      alt: "resume.jpg",
+      image: notepadImg,
+      name: "sketchbook-App",
+      alt: "sketchbook.jpg",
       available: {
-        Code: "url",
-        Video: "url",
-        Live: "url",
+        Code: "https://github.com/vish-n-u/notepad",
+        Live: "https://dapper-sopapillas-db5d80.netlify.app/",
       },
     },
   ],

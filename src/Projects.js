@@ -50,7 +50,7 @@ const ColorChangingButton = () => {
                 className="image-container group m-4 lg:min-w-[400px] lg:w-1/4 md:w-1/3 lg:max-w-[450px] max-w-[300px] aspect-[7/5] relative"
               >
                 <div className="overlay"></div>
-                <img src={obj.image} alt={obj.alt} className="image" />
+                <img src={obj.image} alt={obj.alt} className="image bg-gradient-to-br from-fuchsia-500/70 via-purple-700/70 to-indigo-600/80" />
                 <div className="w-full h-full  z-50 flex absolute bottom-0 justify-evenly">
                   {Object.keys(obj.available).map((val, index) => {
                     let position =
