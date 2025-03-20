@@ -108,7 +108,7 @@ export const projects = {
       available: {
         Code: "https://github.com/vish-n-u/foodVillaApp",
         Video: "https://www.youtube.com/watch?v=Tpbe2MsCvZo",
-        Live: "https://main--deluxe-cuchufli-f03acb.netlify.app/",
+        Live: "https://rapidosh.in/",
       },
     },
     {
