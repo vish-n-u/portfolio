@@ -5,7 +5,7 @@ import Portfolio from "./NewUi";
 function App() {
   return (
     <>
-      <Portfolio />
+      <NavBar />
     </>
   );
 }
