@@ -174,9 +174,28 @@ experience: [
     }, []);
 
   // Three.js Scene Setup
-  useEffect(() => {
-    if (!mountRef.current) return;
+ useEffect(() => {
+  if (!mountRef.current) return;
 
+  const testPerformance = (callback) => {
+    let frames = 0;
+    const start = performance.now();
+
+    function testLoop() {
+      frames++;
+      const now = performance.now();
+      if (now - start < 1000) {
+        requestAnimationFrame(testLoop);
+      } else {
+        const fps = frames / ((now - start) / 1000);
+        callback(fps);
+      }
+    }
+
+    requestAnimationFrame(testLoop);
+  };
+
+  const initThreeScene = () => {
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(
       75,
@@ -190,7 +209,6 @@ experience: [
     renderer.setPixelRatio(window.devicePixelRatio);
     mountRef.current.appendChild(renderer.domElement);
 
-    // Create floating geometric shapes
     const geometries = [
       new THREE.BoxGeometry(1, 1, 1),
       new THREE.SphereGeometry(0.7, 32, 32),
@@ -225,7 +243,8 @@ experience: [
     for (let i = 0; i < 15; i++) {
       const geometry =
         geometries[Math.floor(Math.random() * geometries.length)];
-      const material = materials[Math.floor(Math.random() * materials.length)];
+      const material =
+        materials[Math.floor(Math.random() * materials.length)];
       const mesh = new THREE.Mesh(geometry, material);
 
       mesh.position.set(
@@ -252,15 +271,11 @@ experience: [
       meshes.push(mesh);
     }
 
-    // Lighting
     const ambientLight = new THREE.AmbientLight(
       isDarkMode ? 0x404040 : 0x606060,
       0.6
     );
-    const directionalLight = new THREE.DirectionalLight(
-      isDarkMode ? 0xffffff : 0xffffff,
-      1
-    );
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
     directionalLight.position.set(5, 5, 5);
 
     scene.add(ambientLight);
@@ -268,7 +283,6 @@ experience: [
 
     camera.position.z = 10;
 
-    // Mouse interaction
     const mouse = new THREE.Vector2();
     const handleMouseMove = (event) => {
       mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
@@ -276,7 +290,6 @@ experience: [
     };
     window.addEventListener("mousemove", handleMouseMove);
 
-    // Animation loop
     const animate = () => {
       requestAnimationFrame(animate);
 
@@ -285,7 +298,6 @@ experience: [
         mesh.rotation.y += mesh.userData.rotationSpeed.y;
         mesh.rotation.z += mesh.userData.rotationSpeed.z;
 
-        // Mouse interaction effect
         mesh.position.x += (mouse.x * 2 - mesh.position.x) * 0.02;
         mesh.position.y += (mouse.y * 2 - mesh.position.y) * 0.02;
       });
@@ -298,7 +310,6 @@ experience: [
     };
     animate();
 
-    // Handle resize
     const handleResize = () => {
       camera.aspect = window.innerWidth / window.innerHeight;
       camera.updateProjectionMatrix();
@@ -308,6 +319,7 @@ experience: [
 
     sceneRef.current = { scene, camera, renderer, meshes };
 
+    // Cleanup
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
       window.removeEventListener("resize", handleResize);
@@ -316,7 +328,21 @@ experience: [
       }
       renderer.dispose();
     };
-  }, [isDarkMode]);
+  };
+
+  // Start test, then conditionally initialize
+  testPerformance((fps) => {
+    if (fps < 30) {
+      console.warn("Low performance detected. Skipping Three.js.");
+      // Optionally show fallback here
+      mountRef.current.innerHTML =
+        "<div style='text-align:center;color:gray;'>Visuals disabled for better performance</div>";
+    } else {
+      const cleanup = initThreeScene();
+      return cleanup;
+    }
+  });
+}, [isDarkMode]);
 
   useEffect(() => {
     const handleScroll = () => {
