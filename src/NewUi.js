@@ -129,14 +129,18 @@ experience: [
     position: "Co-lead Software Developer",
     duration: "Jan 2024 - Present",
     description:
-      "Assisted with development of 'VidyBack', integrating new features with React and Nodejs to meet user needs and market trends. Built and optimized RESTful APIs and Firebase for real-time data sync and storage. Enhanced performance through bug fixes, load time improvements, and component optimization. Collaborated on modern UI/UX, integrated OpenAI for intelligent content generation, and mentored interns to uphold development quality.",
+      <p>Assisted with development of 'VidyBack', integrating new features with React and Nodejs to meet user needs and market trends. <br/>
+      Built and optimized RESTful APIs and Firebase for real-time data sync and storage. <br/> 
+      Enhanced performance through bug fixes, load time improvements, and component optimization.<br/>
+       Collaborated on modern UI/UX, integrated OpenAI for intelligent content generation, and mentored interns to uphold development quality.</p>,
   },
   {
     company: "Toriox OPC",
     position: "Intern",
     duration: "2023 - 2024",
     description:
-      "Collaborated with the team to design and launch a user-friendly website using Next.js. Assisted in debugging and improving software functionality alongside senior developers.",
+     <p>Collaborated with the team to design and launch a user-friendly website using Next.js.<br/>
+      Assisted in debugging and improving software functionality alongside senior developers.</p>,
   },
 ]
   };
@@ -480,7 +484,7 @@ experience: [
                 link.click();
                 document.body.removeChild(link);
               }}
-              className={`px-8 py-4 ${themeClasses.card} rounded-full transition-all duration-300 hover:scale-105 border flex items-center space-x-2`}
+              className={`px-10 py-4 ${themeClasses.card} rounded-full transition-all duration-300 hover:scale-105 border flex items-center space-x-2`}
             >
               <Download
                 className={`hover:text-white hover:fill-white`}
@@ -555,7 +559,7 @@ experience: [
               </div>
             </div>
 
-            <div className="space-y-8">
+            <div className={`space-y-8 ${!isDarkMode ?`${themeClasses.card}  rounded-3xl p-8 backdrop-blur-sm border transform hover:scale-105 transition-all duration-300`:"" }`}>
               <p
                 className={`text-xl font-semibold leading-relaxed ${themeClasses.textSecondary} ${isDarkMode?"text-purple-200":"text-violet-700"}`}
               >
@@ -586,7 +590,7 @@ experience: [
       {/* Projects Section */}
       <section id="projects" className="py-20 px-4 relative z-10">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-5xl md:text-6xl font-bold text-center mb-20 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+          <h2 className="text-5xl md:text-6xl p-5 font-bold text-center mb-20 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
             Featured Projects
           </h2>
 
@@ -801,12 +805,12 @@ experience: [
       {/* Contact Section */}
       <section id="contact" className="py-20 px-4 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-5xl md:text-6xl font-bold mb-12 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+          <h2 className="text-5xl md:text-6xl p-5 font-bold mb-12 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
             Let's Create Something Amazing
           </h2>
 
           <p
-            className={`text-2xl mb-16 max-w-3xl mx-auto ${themeClasses.textSecondary}`}
+            className={`text-2xl mb-16 max-w-3xl mx-auto ${themeClasses.textSecondary} ${!isDarkMode ?`${themeClasses.card}  rounded-3xl p-8 backdrop-blur-sm border transform hover:scale-105 transition-all duration-300`:"" } ${isDarkMode?"text-purple-200":"text-blue-700"}`}
           >
             Ready to bring your ideas to life? I'm always excited to work on
             innovative projects and collaborate with creative minds.
