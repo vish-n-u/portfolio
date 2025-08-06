@@ -81,7 +81,7 @@ const Portfolio = () => {
           "Firebase Crashlytics",
           "OpenAi Api integrations",
         ],
-        video: "https://www.youtube.com/watch?v=delR6mivhLw",
+        video: "https://www.youtube.com/watch?v=gFBa8hxmpFc",
         date: "2024",
         featured: true,
       },
@@ -126,7 +126,7 @@ const Portfolio = () => {
 experience: [
   {
     company: "KN Technolabs",
-    position: "Co-lead Software Developer",
+    position: "Software Developer",
     duration: "Jan 2024 - Present",
     description:
       <p>Assisted with development of 'VidyBack', integrating new features with React and Nodejs to meet user needs and market trends. <br/>
