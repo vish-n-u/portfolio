@@ -476,7 +476,7 @@ experience: [
             {portfolioData.name}
           </h1>
 
-          <p className="text-2xl md:text-3xl mb-8 font-light bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
+          <p className="text-2xl p-5 md:text-3xl mb-8 font-light bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
             {portfolioData.title}
           </p>
 
