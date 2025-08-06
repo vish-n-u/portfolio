@@ -174,149 +174,149 @@ experience: [
     }, []);
 
   // Three.js Scene Setup
-  useEffect(() => {
-    if (!mountRef.current) return;
+  // useEffect(() => {
+  //   if (!mountRef.current) return;
 
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(
-      75,
-      window.innerWidth / window.innerHeight,
-      0.1,
-      1000
-    );
-    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+  //   const scene = new THREE.Scene();
+  //   const camera = new THREE.PerspectiveCamera(
+  //     75,
+  //     window.innerWidth / window.innerHeight,
+  //     0.1,
+  //     1000
+  //   );
+  //   const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
 
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(window.devicePixelRatio);
-    mountRef.current.appendChild(renderer.domElement);
+  //   renderer.setSize(window.innerWidth, window.innerHeight);
+  //   renderer.setPixelRatio(window.devicePixelRatio);
+  //   mountRef.current.appendChild(renderer.domElement);
 
-    // Create floating geometric shapes
-    const geometries = [
-      new THREE.BoxGeometry(1, 1, 1),
-      new THREE.SphereGeometry(0.7, 32, 32),
-      new THREE.ConeGeometry(0.6, 1.2, 8),
-      new THREE.TorusGeometry(0.6, 0.3, 16, 100),
-    ];
+  //   // Create floating geometric shapes
+  //   const geometries = [
+  //     new THREE.BoxGeometry(1, 1, 1),
+  //     new THREE.SphereGeometry(0.7, 32, 32),
+  //     new THREE.ConeGeometry(0.6, 1.2, 8),
+  //     new THREE.TorusGeometry(0.6, 0.3, 16, 100),
+  //   ];
 
-    const materials = [
-      new THREE.MeshPhongMaterial({
-        color: isDarkMode ? 0x4f46e5 : 0x3b82f6,
-        transparent: true,
-        opacity: 0.8,
-      }),
-      new THREE.MeshPhongMaterial({
-        color: isDarkMode ? 0x7c3aed : 0x8b5cf6,
-        transparent: true,
-        opacity: 0.8,
-      }),
-      new THREE.MeshPhongMaterial({
-        color: isDarkMode ? 0x06b6d4 : 0x0ea5e9,
-        transparent: true,
-        opacity: 0.8,
-      }),
-      new THREE.MeshPhongMaterial({
-        color: isDarkMode ? 0x8b5cf6 : 0xa855f7,
-        transparent: true,
-        opacity: 0.8,
-      }),
-    ];
+  //   const materials = [
+  //     new THREE.MeshPhongMaterial({
+  //       color: isDarkMode ? 0x4f46e5 : 0x3b82f6,
+  //       transparent: true,
+  //       opacity: 0.8,
+  //     }),
+  //     new THREE.MeshPhongMaterial({
+  //       color: isDarkMode ? 0x7c3aed : 0x8b5cf6,
+  //       transparent: true,
+  //       opacity: 0.8,
+  //     }),
+  //     new THREE.MeshPhongMaterial({
+  //       color: isDarkMode ? 0x06b6d4 : 0x0ea5e9,
+  //       transparent: true,
+  //       opacity: 0.8,
+  //     }),
+  //     new THREE.MeshPhongMaterial({
+  //       color: isDarkMode ? 0x8b5cf6 : 0xa855f7,
+  //       transparent: true,
+  //       opacity: 0.8,
+  //     }),
+  //   ];
 
-    const meshes = [];
-    for (let i = 0; i < 15; i++) {
-      const geometry =
-        geometries[Math.floor(Math.random() * geometries.length)];
-      const material = materials[Math.floor(Math.random() * materials.length)];
-      const mesh = new THREE.Mesh(geometry, material);
+  //   const meshes = [];
+  //   for (let i = 0; i < 15; i++) {
+  //     const geometry =
+  //       geometries[Math.floor(Math.random() * geometries.length)];
+  //     const material = materials[Math.floor(Math.random() * materials.length)];
+  //     const mesh = new THREE.Mesh(geometry, material);
 
-      mesh.position.set(
-        (Math.random() - 0.5) * 20,
-        (Math.random() - 0.5) * 20,
-        (Math.random() - 0.5) * 20
-      );
+  //     mesh.position.set(
+  //       (Math.random() - 0.5) * 20,
+  //       (Math.random() - 0.5) * 20,
+  //       (Math.random() - 0.5) * 20
+  //     );
 
-      mesh.rotation.set(
-        Math.random() * Math.PI,
-        Math.random() * Math.PI,
-        Math.random() * Math.PI
-      );
+  //     mesh.rotation.set(
+  //       Math.random() * Math.PI,
+  //       Math.random() * Math.PI,
+  //       Math.random() * Math.PI
+  //     );
 
-      mesh.userData = {
-        rotationSpeed: {
-          x: (Math.random() - 0.5) * 0.02,
-          y: (Math.random() - 0.5) * 0.02,
-          z: (Math.random() - 0.5) * 0.02,
-        },
-      };
+  //     mesh.userData = {
+  //       rotationSpeed: {
+  //         x: (Math.random() - 0.5) * 0.02,
+  //         y: (Math.random() - 0.5) * 0.02,
+  //         z: (Math.random() - 0.5) * 0.02,
+  //       },
+  //     };
 
-      scene.add(mesh);
-      meshes.push(mesh);
-    }
+  //     scene.add(mesh);
+  //     meshes.push(mesh);
+  //   }
 
-    // Lighting
-    const ambientLight = new THREE.AmbientLight(
-      isDarkMode ? 0x404040 : 0x606060,
-      0.6
-    );
-    const directionalLight = new THREE.DirectionalLight(
-      isDarkMode ? 0xffffff : 0xffffff,
-      1
-    );
-    directionalLight.position.set(5, 5, 5);
+  //   // Lighting
+  //   const ambientLight = new THREE.AmbientLight(
+  //     isDarkMode ? 0x404040 : 0x606060,
+  //     0.6
+  //   );
+  //   const directionalLight = new THREE.DirectionalLight(
+  //     isDarkMode ? 0xffffff : 0xffffff,
+  //     1
+  //   );
+  //   directionalLight.position.set(5, 5, 5);
 
-    scene.add(ambientLight);
-    scene.add(directionalLight);
+  //   scene.add(ambientLight);
+  //   scene.add(directionalLight);
 
-    camera.position.z = 10;
+  //   camera.position.z = 10;
 
-    // Mouse interaction
-    const mouse = new THREE.Vector2();
-    const handleMouseMove = (event) => {
-      mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-      mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-    };
-    window.addEventListener("mousemove", handleMouseMove);
+  //   // Mouse interaction
+  //   const mouse = new THREE.Vector2();
+  //   const handleMouseMove = (event) => {
+  //     mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+  //     mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+  //   };
+  //   window.addEventListener("mousemove", handleMouseMove);
 
-    // Animation loop
-    const animate = () => {
-      requestAnimationFrame(animate);
+  //   // Animation loop
+  //   const animate = () => {
+  //     requestAnimationFrame(animate);
 
-      meshes.forEach((mesh) => {
-        mesh.rotation.x += mesh.userData.rotationSpeed.x;
-        mesh.rotation.y += mesh.userData.rotationSpeed.y;
-        mesh.rotation.z += mesh.userData.rotationSpeed.z;
+  //     meshes.forEach((mesh) => {
+  //       mesh.rotation.x += mesh.userData.rotationSpeed.x;
+  //       mesh.rotation.y += mesh.userData.rotationSpeed.y;
+  //       mesh.rotation.z += mesh.userData.rotationSpeed.z;
 
-        // Mouse interaction effect
-        mesh.position.x += (mouse.x * 2 - mesh.position.x) * 0.02;
-        mesh.position.y += (mouse.y * 2 - mesh.position.y) * 0.02;
-      });
+  //       // Mouse interaction effect
+  //       mesh.position.x += (mouse.x * 2 - mesh.position.x) * 0.02;
+  //       mesh.position.y += (mouse.y * 2 - mesh.position.y) * 0.02;
+  //     });
 
-      camera.position.x += (mouse.x * 2 - camera.position.x) * 0.05;
-      camera.position.y += (mouse.y * 2 - camera.position.y) * 0.05;
-      camera.lookAt(scene.position);
+  //     camera.position.x += (mouse.x * 2 - camera.position.x) * 0.05;
+  //     camera.position.y += (mouse.y * 2 - camera.position.y) * 0.05;
+  //     camera.lookAt(scene.position);
 
-      renderer.render(scene, camera);
-    };
-    animate();
+  //     renderer.render(scene, camera);
+  //   };
+  //   animate();
 
-    // Handle resize
-    const handleResize = () => {
-      camera.aspect = window.innerWidth / window.innerHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize(window.innerWidth, window.innerHeight);
-    };
-    window.addEventListener("resize", handleResize);
+  //   // Handle resize
+  //   const handleResize = () => {
+  //     camera.aspect = window.innerWidth / window.innerHeight;
+  //     camera.updateProjectionMatrix();
+  //     renderer.setSize(window.innerWidth, window.innerHeight);
+  //   };
+  //   window.addEventListener("resize", handleResize);
 
-    sceneRef.current = { scene, camera, renderer, meshes };
+  //   sceneRef.current = { scene, camera, renderer, meshes };
 
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-      window.removeEventListener("resize", handleResize);
-      if (mountRef.current && renderer.domElement) {
-        mountRef.current.removeChild(renderer.domElement);
-      }
-      renderer.dispose();
-    };
-  }, [isDarkMode]);
+  //   return () => {
+  //     window.removeEventListener("mousemove", handleMouseMove);
+  //     window.removeEventListener("resize", handleResize);
+  //     if (mountRef.current && renderer.domElement) {
+  //       mountRef.current.removeChild(renderer.domElement);
+  //     }
+  //     renderer.dispose();
+  //   };
+  // }, [isDarkMode]);
 
   useEffect(() => {
     const handleScroll = () => {
