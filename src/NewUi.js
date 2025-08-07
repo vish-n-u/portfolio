@@ -196,6 +196,7 @@ experience: [
   };
 
   const initThreeScene = () => {
+    
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(
       75,
@@ -427,7 +428,7 @@ experience: [
                 onClick={toggleTheme}
                 className={`p-2 rounded-full transition-all duration-300 ${themeClasses.buttonOutline} border`}
               >
-                {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
+                {isDarkMode ? <Sun  className="hover:fill-yellow-400" size={20} /> : <Moon className="hover:fill-white" size={20}  />}
               </button>
             </div>
 
@@ -437,7 +438,7 @@ experience: [
                 onClick={toggleTheme}
                 className={`p-2 rounded-full transition-all duration-300 ${themeClasses.buttonOutline} border`}
               >
-                {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
+                {isDarkMode ? <Sun size={20} className="hover:fill-yellow-400"/> : <Moon size={20} className="hover:fill-white"/>}
               </button>
               <button onClick={() => setIsMenuOpen(!isMenuOpen)}>
                 {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
