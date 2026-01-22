@@ -581,9 +581,9 @@ const Portfolio = () => {
             </div>
 
             <div className="space-y-8">
-              <a
-                href={`mailto:${portfolioData.email}`}
-                className="group block"
+              <button
+                onClick={() => window.location.href = `mailto:${portfolioData.email}`}
+                className="group block text-left cursor-pointer"
               >
                 <div className={`text-xs uppercase tracking-wider mb-2 transition-colors duration-300 ${
                   isDark ? 'text-stone-500' : 'text-stone-500'
@@ -601,7 +601,7 @@ const Portfolio = () => {
                     className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"
                   />
                 </div>
-              </a>
+              </button>
 
               <div className={`pt-6 border-t transition-colors duration-300 ${
                 isDark ? 'border-stone-700' : 'border-stone-200'
@@ -636,16 +636,16 @@ const Portfolio = () => {
                   >
                     <Linkedin size={24} />
                   </a>
-                  <a
-                    href={`mailto:${portfolioData.email}`}
-                    className={`transition-colors duration-300 ${
+                  <button
+                    onClick={() => window.location.href = `mailto:${portfolioData.email}`}
+                    className={`transition-colors duration-300 cursor-pointer ${
                       isDark
                         ? 'text-stone-100 hover:text-stone-400'
                         : 'text-stone-900 hover:text-stone-600'
                     }`}
                   >
                     <Mail size={24} />
-                  </a>
+                  </button>
                 </div>
               </div>
             </div>
