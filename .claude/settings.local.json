@@ -1,7 +1,13 @@
 {
   "permissions": {
     "allow": [
-      "Bash(npm start)"
+      "Bash(npm start)",
+      "WebFetch(domain:louiscuenot.com)",
+      "Bash(npm install:*)",
+      "Bash(taskkill:*)",
+      "Bash(move \"C:\\\\Users\\\\vishn\\\\Desktop\\\\portfolio\\\\vidyback logo.png\" \"C:\\\\Users\\\\vishn\\\\Desktop\\\\portfolio\\\\src\\\\assets\\\\images\"\")",
+      "Bash(move \"C:\\\\Users\\\\vishn\\\\Desktop\\\\portfolio\\\\notera.png\" \"C:\\\\Users\\\\vishn\\\\Desktop\\\\portfolio\\\\src\\\\assets\\\\images\"\")",
+      "Bash(powershell:*)"
     ]
   }
 }

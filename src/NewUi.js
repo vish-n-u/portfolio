@@ -6,7 +6,7 @@ import youtubeImg from "./assets/images/projectsImages/youtube.png";
 import backendImg from "./assets/images/projectsImages/backend.jpg";
 import notera from "./assets/images/projectsImages/notera.png";
 import excelCloneImg from "./assets/images/projectsImages/excel-cloneImg.PNG";
-import pdfUrlPath from "./assets/Vishnu_Nair_2yr_exp_AI_Fullstack_Developer_Mumbai.pdf"
+import pdfUrlPath from "./assets/documents/Vishnu Nair Mern Stack 2yr+ experience.pdf"
 import {
   Github,
   Linkedin,
@@ -506,7 +506,7 @@ experience: [
                 const pdfUrl = pdfUrlPath;
                 const link = document.createElement("a");
                 link.href = pdfUrl;
-                link.download = "Vishnu_Nair_2yr_exp_AI_Fullstack_Developer_Mumbai.pdf"; // Desired filename for download
+                link.download = "Vishnu Nair Mern Stack 2yr+ experience.pdf"; // Desired filename for download
                 document.body.appendChild(link);
                 link.click();
                 document.body.removeChild(link);

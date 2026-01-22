@@ -2,86 +2,80 @@ import React, { useState, useEffect } from "react";
 import swiggyImg from "./assets/images/projectsImages/swiggyCloneImg.JPG";
 import excelCloneImg from "./assets/images/projectsImages/excel-cloneImg.PNG";
 import notera from "./assets/images/projectsImages/notera.png";
-import pdfUrlPath from "./assets/Vishnu_Nair_2yr_exp_AI_Fullstack_Developer_Mumbai.pdf";
+import pdfUrlPath from "./assets/documents/Vishnu Nair Mern Stack 2yr+ experience.pdf";
+import vidybackLogo from "./assets/images/vidyback logo.png";
 import {
   Github,
   Linkedin,
   Mail,
-  ExternalLink,
-  Code,
-  ChevronDown,
-  Menu,
-  X,
-  MapPin,
+  ArrowUpRight,
   Download,
-  Phone,
-  Video,
-  Briefcase,
-  Award,
-  Zap,
-  Users,
+  Moon,
+  Sun,
 } from "lucide-react";
 
 const Portfolio = () => {
-  const [activeSection, setActiveSection] = useState("home");
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState("work");
+  const [isDark, setIsDark] = useState(false);
+  const cursorRef = React.useRef(null);
 
   const portfolioData = {
     name: "Vishnu Nair",
     title: "Software Engineer",
-    tagline: "Building scalable applications that solve real-world problems",
-    location: "Mumbai, Maharashtra",
+    location: "Mumbai, India",
     email: "vishnuna26@gmail.com",
-    phone: "+91 9920439118",
     github: "https://github.com/vish-n-u",
     linkedin: "https://www.linkedin.com/in/vishnu-nair-%F0%9F%9B%A9%EF%B8%8F-439472204/",
-
-    highlights: [
-      { icon: Zap, label: "30% API Performance Boost", color: "text-emerald-500" },
-      { icon: Award, label: "33% Bundle Size Reduction", color: "text-blue-500" },
-      { icon: Users, label: "2+ Years Experience", color: "text-purple-500" },
-      { icon: Briefcase, label: "10+ Projects Delivered", color: "text-orange-500" },
-    ],
-
-    skills: {
-      "Frontend": ["React.js", "TypeScript", "Next.js", "Tailwind CSS", "WebAssembly"],
-      "Backend": ["Node.js", "Express.js", "GraphQL", "RESTful APIs"],
-      "Database": ["MongoDB", "MySQL", "Firebase"],
-      "Mobile": ["Kotlin", "Jetpack Compose", "Android Studio"],
-      "DevOps & Tools": ["AWS S3", "Docker", "Git", "Vite"],
-    },
 
     projects: [
       {
         id: 1,
         title: "Notera",
-        description: "A hands-free note-taking Android app with real-time AI transcription and smart organization.",
+        type: "Mobile Application",
+        year: "2024",
+        description: "A hands-free note-taking Android app with AI-powered transcription and smart organization. 50+ installs on Play Store.",
         image: notera,
         tech: ["Kotlin", "Jetpack Compose", "Firebase", "OpenAI API"],
         video: "https://www.youtube.com/watch?v=delR6mivhLw",
-        highlights: ["Voice-to-text conversion", "AI-powered organization", "Real-time sync"],
+        link: "https://play.google.com/store/apps/details?id=com.myapp.ridescribe&hl=en_IN",
+        colorScheme: {
+          bg: "#FFE5B4",
+          text: "#8B4513",
+          accent: "#FF8C00"
+        }
       },
       {
         id: 2,
         title: "Swiggy Clone",
-        description: "Full-stack food delivery platform with microservices architecture and real-time order tracking.",
+        type: "Web Application",
+        year: "2023",
+        description: "Full-stack food delivery platform with microservices architecture and real-time order tracking",
         image: swiggyImg,
-        tech: ["React", "Redux", "Node.js", "MongoDB", "AWS", "Nginx"],
+        tech: ["React", "Node.js", "MongoDB", "AWS"],
         github: "https://github.com/vish-n-u/foodVillaApp",
         live: "https://rapidosh.in/",
         video: "https://www.youtube.com/watch?v=Tpbe2MsCvZo",
-        highlights: ["Microservices architecture", "Google OAuth", "AWS deployment"],
+        colorScheme: {
+          bg: "#FFD6E8",
+          text: "#C41E3A",
+          accent: "#FF1744"
+        }
       },
       {
         id: 3,
         title: "Excel Clone",
-        description: "Interactive spreadsheet application with formula engine and data visualization capabilities.",
+        type: "Web Application",
+        year: "2023",
+        description: "Interactive spreadsheet application with formula engine and data visualization",
         image: excelCloneImg,
         tech: ["Vanilla JS", "HTML5", "CSS3"],
         github: "https://github.com/vish-n-u/Excel-clone-",
         live: "https://excel-clone12.netlify.app/",
-        highlights: ["Formula engine", "Cell formatting", "Data export"],
+        colorScheme: {
+          bg: "#E1CCFF",
+          text: "#4A148C",
+          accent: "#7B1FA2"
+        }
       },
     ],
 
@@ -90,301 +84,316 @@ const Portfolio = () => {
         company: "KNTECHNOLABS",
         position: "Software Developer",
         duration: "Jan 2024 - Present",
-        icon: Briefcase,
-        highlights: [
-          "Improved API performance by 30% through optimization and caching strategies",
-          "Reduced bundle size by 33% using vite-bundle-visualizer and code splitting",
-          "Integrated social media APIs (Facebook, Instagram, TikTok, LinkedIn, Pinterest)",
-          "Implemented GraphQL APIs for Shopify and Etsy integrations",
-          "Built features using React, TypeScript, WebAssembly, and Service Workers",
-        ],
+        achievements: [
+          "Improved API performance by 30%",
+          "Reduced bundle size by 33%",
+          "Integrated social media APIs",
+        ]
       },
       {
         company: "Toriox OPC",
         position: "Intern",
         duration: "Nov 2023 - Jan 2024",
-        icon: Users,
-        highlights: [
-          "Developed responsive website using Next.js and modern UI practices",
-          "Collaborated with team on bug fixes and feature implementations",
-        ],
+        achievements: [
+          "Developed with Next.js",
+          "Collaborated on features",
+        ]
       },
     ],
+
+    skills: ["React.js", "TypeScript", "Node.js", "MongoDB", "GraphQL", "Kotlin", "AWS", "Docker"]
   };
 
   useEffect(() => {
-    const sections = document.querySelectorAll("section[id]");
-    const observerOptions = {
-      root: null,
-      rootMargin: "-20% 0px -80% 0px",
-      threshold: 0,
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          setActiveSection(entry.target.id);
-        }
-      });
-    }, observerOptions);
-
-    sections.forEach((section) => observer.observe(section));
-
-    return () => observer.disconnect();
+    // Load theme from localStorage
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme === "dark") {
+      setIsDark(true);
+    }
   }, []);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+    const mousePosition = { x: 0, y: 0 };
+    const cursorPosition = { x: 0, y: 0 };
+    const speed = 0.15; // Adjust this for faster/slower following (0.1 = slow, 0.3 = fast)
+    let animationFrameId;
+
+    const handleMouseMove = (e) => {
+      mousePosition.x = e.clientX;
+      mousePosition.y = e.clientY;
     };
+
+    const animate = () => {
+      // Smooth interpolation (lerp)
+      cursorPosition.x += (mousePosition.x - cursorPosition.x) * speed;
+      cursorPosition.y += (mousePosition.y - cursorPosition.y) * speed;
+
+      if (cursorRef.current) {
+        cursorRef.current.style.left = `${cursorPosition.x}px`;
+        cursorRef.current.style.top = `${cursorPosition.y}px`;
+      }
+
+      animationFrameId = requestAnimationFrame(animate);
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    animate();
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      cancelAnimationFrame(animationFrameId);
+    };
+  }, []);
+
+  const toggleTheme = () => {
+    const newTheme = !isDark;
+    setIsDark(newTheme);
+    localStorage.setItem("theme", newTheme ? "dark" : "light");
+  };
+
+  useEffect(() => {
+    // Smooth scroll behavior
+    const handleScroll = () => {
+      const sections = document.querySelectorAll("section[id]");
+      sections.forEach((section) => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top <= 100 && rect.bottom >= 100) {
+          setActiveSection(section.id);
+        }
+      });
+    };
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId);
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
-      setIsMenuOpen(false);
     }
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50">
+    <div className={`min-h-screen font-sans transition-colors duration-300 ${isDark ? 'bg-stone-900' : 'bg-stone-50'}`}>
+      {/* Custom Cursor */}
+      <div
+        ref={cursorRef}
+        className={`hidden lg:block fixed w-2 h-2 rounded-full pointer-events-none z-50 ${isDark ? 'bg-stone-100' : 'bg-stone-900'}`}
+        style={{
+          transform: "translate(-50%, -50%)",
+          willChange: "left, top",
+        }}
+      />
+
       {/* Navigation */}
-      <nav
-        className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-          isScrolled
-            ? "bg-white/90 backdrop-blur-lg shadow-lg border-b border-gray-200"
-            : "bg-transparent"
-        }`}
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-4">
-            <div className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              VN
-            </div>
+      <nav className={`fixed top-0 left-0 right-0 z-40 backdrop-blur-md border-b transition-colors duration-300 ${
+        isDark
+          ? 'bg-stone-900/80 border-stone-700'
+          : 'bg-stone-50/80 border-stone-200'
+      }`}>
+        <div className="max-w-7xl mx-auto px-6 lg:px-12 py-6 flex justify-between items-center">
+          <div className={`text-xl font-medium tracking-tight ${isDark ? 'text-stone-100' : 'text-stone-900'}`}>
+            {portfolioData.name}
+          </div>
 
-            {/* Desktop Menu */}
-            <div className="hidden md:flex items-center space-x-8">
-              {["home", "about", "projects", "experience", "contact"].map((item) => (
-                <button
-                  key={item}
-                  onClick={() => scrollToSection(item)}
-                  className={`capitalize font-medium transition-colors ${
-                    activeSection === item
-                      ? "text-blue-600"
-                      : "text-gray-600 hover:text-blue-600"
-                  }`}
-                >
-                  {item}
-                </button>
-              ))}
-            </div>
+          <div className="flex items-center gap-8">
+            {["about", "projects", "contact"].map((item) => (
+              <button
+                key={item}
+                onClick={() => scrollToSection(item)}
+                className={`text-sm uppercase tracking-wider transition-colors ${
+                  activeSection === item
+                    ? `${isDark ? 'text-stone-100' : 'text-stone-900'} font-medium`
+                    : `${isDark ? 'text-stone-400 hover:text-stone-100' : 'text-stone-500 hover:text-stone-900'}`
+                }`}
+              >
+                {item}
+              </button>
+            ))}
 
-            {/* Mobile Menu Button */}
+            {/* Theme Toggle */}
             <button
-              className="md:hidden text-gray-600"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              onClick={toggleTheme}
+              className={`p-2 rounded-full transition-all duration-300 ${
+                isDark
+                  ? 'hover:bg-stone-800'
+                  : 'hover:bg-stone-200'
+              }`}
+              aria-label="Toggle theme"
             >
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              {isDark ? (
+                <Sun size={20} className="text-stone-100" />
+              ) : (
+                <Moon size={20} className="text-stone-900" />
+              )}
             </button>
           </div>
         </div>
-
-        {/* Mobile Menu */}
-        {isMenuOpen && (
-          <div className="md:hidden bg-white border-t border-gray-200 shadow-lg">
-            <div className="px-4 py-3 space-y-2">
-              {["home", "about", "projects", "experience", "contact"].map((item) => (
-                <button
-                  key={item}
-                  onClick={() => scrollToSection(item)}
-                  className="block w-full text-left px-4 py-2 text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg capitalize font-medium transition-colors"
-                >
-                  {item}
-                </button>
-              ))}
-            </div>
-          </div>
-        )}
       </nav>
 
       {/* Hero Section */}
-      <section id="home" className="min-h-screen flex items-center justify-center px-4 pt-20">
-        <div className="max-w-5xl mx-auto text-center">
-          <div className="mb-6">
-            <span className="inline-block px-4 py-2 bg-blue-100 text-blue-600 rounded-full text-sm font-medium mb-6">
-              Available for opportunities
-            </span>
-          </div>
+      <section className="min-h-screen flex items-center justify-center px-6 lg:px-12 pt-24">
+        <div className="max-w-7xl w-full">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            {/* Text Content */}
+            <div>
+              <h1 className={`text-5xl lg:text-7xl font-light tracking-tight mb-8 leading-none transition-colors duration-300 ${
+                isDark ? 'text-stone-100' : 'text-stone-900'
+              }`}>
+                Software Engineer
+                <br />
+                building digital
+                <br />
+                experiences
+              </h1>
+              <p className={`text-xl max-w-2xl font-light mb-8 transition-colors duration-300 ${
+                isDark ? 'text-stone-400' : 'text-stone-600'
+              }`}>
+                Specializing in scalable web and mobile applications with a focus on
+                performance and user experience.
+              </p>
+              <button
+                onClick={() => scrollToSection("contact")}
+                className={`inline-flex items-center gap-2 px-8 py-4 rounded-full text-sm uppercase tracking-wider transition-all duration-300 hover:gap-3 group ${
+                  isDark
+                    ? 'bg-stone-100 text-stone-900 hover:bg-stone-200'
+                    : 'bg-stone-900 text-stone-50 hover:bg-stone-800'
+                }`}
+              >
+                Get in touch
+                <ArrowUpRight
+                  size={16}
+                  className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
+                />
+              </button>
+            </div>
 
-          <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6">
-            Hi, I'm <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              {portfolioData.name}
-            </span>
-          </h1>
-
-          <p className="text-2xl md:text-3xl text-gray-600 mb-4 font-medium">
-            {portfolioData.title}
-          </p>
-
-          <p className="text-lg md:text-xl text-gray-500 mb-12 max-w-3xl mx-auto leading-relaxed">
-            {portfolioData.tagline}
-          </p>
-
-          <div className="flex flex-wrap justify-center gap-4 mb-12">
-            <button
-              onClick={() => scrollToSection("projects")}
-              className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl font-semibold hover:shadow-xl transform hover:scale-105 transition-all duration-300"
-            >
-              View My Work
-            </button>
-            <button
-              onClick={() => {
-                const link = document.createElement("a");
-                link.href = pdfUrlPath;
-                link.download = "Vishnu_Nair_Resume.pdf";
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-              }}
-              className="px-8 py-4 bg-white text-gray-700 border-2 border-gray-300 rounded-xl font-semibold hover:border-blue-600 hover:text-blue-600 transform hover:scale-105 transition-all duration-300 flex items-center gap-2"
-            >
-              <Download size={20} />
-              Download Resume
-            </button>
-          </div>
-
-          <div className="flex justify-center space-x-6">
-            <a
-              href={portfolioData.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-3 bg-white rounded-full shadow-md hover:shadow-xl transform hover:scale-110 transition-all duration-300 text-gray-700 hover:text-blue-600"
-              aria-label="GitHub"
-            >
-              <Github size={24} />
-            </a>
-            <a
-              href={portfolioData.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-3 bg-white rounded-full shadow-md hover:shadow-xl transform hover:scale-110 transition-all duration-300 text-gray-700 hover:text-blue-600"
-              aria-label="LinkedIn"
-            >
-              <Linkedin size={24} />
-            </a>
-            <a
-              href={`mailto:${portfolioData.email}`}
-              className="p-3 bg-white rounded-full shadow-md hover:shadow-xl transform hover:scale-110 transition-all duration-300 text-gray-700 hover:text-blue-600"
-              aria-label="Email"
-            >
-              <Mail size={24} />
-            </a>
-          </div>
-
-          <div className="mt-16 animate-bounce">
-            <ChevronDown size={32} className="text-gray-400 mx-auto" />
           </div>
         </div>
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-20 px-4">
+      <section id="about" className={`py-24 px-6 lg:px-12 transition-colors duration-300 ${
+        isDark ? 'bg-stone-800' : 'bg-stone-100'
+      }`}>
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold text-center text-gray-900 mb-4">
-            About Me
+          <h2 className={`text-sm uppercase tracking-wider mb-16 transition-colors duration-300 ${
+            isDark ? 'text-stone-500' : 'text-stone-500'
+          }`}>
+            About
           </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto mb-16"></div>
 
-          {/* Highlights */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
-            {portfolioData.highlights.map((item, index) => {
-              const Icon = item.icon;
-              return (
-                <div
-                  key={index}
-                  className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
-                >
-                  <Icon className={`${item.color} mb-3`} size={32} />
-                  <p className="text-gray-700 font-semibold text-sm">{item.label}</p>
-                </div>
-              );
-            })}
-          </div>
-
-          {/* Main Content */}
-          <div className="grid md:grid-cols-2 gap-12">
-            {/* Left Column - About Text */}
-            <div className="space-y-6">
-              <div className="bg-white rounded-2xl p-8 shadow-lg">
-                <h3 className="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-2">
-                  <Briefcase className="text-blue-600" size={28} />
-                  Who I Am
+          <div className="grid lg:grid-cols-2 gap-16">
+            {/* Left Column */}
+            <div>
+              {/* Text Content */}
+              <div className="space-y-8">
+                <h3 className={`text-4xl font-light tracking-tight mb-8 leading-snug transition-colors duration-300 ${
+                  isDark ? 'text-stone-100' : 'text-stone-900'
+                }`}>
+                  I'm a software engineer based in Mumbai, specializing in building
+                  exceptional digital experiences.
                 </h3>
-                <p className="text-gray-600 leading-relaxed mb-4">
-                  I'm a passionate software engineer specializing in building scalable web and mobile applications.
-                  With over 2 years of hands-on experience, I've worked on everything from API development to
-                  full-stack applications.
+                <p className={`text-lg mb-6 leading-relaxed font-light transition-colors duration-300 ${
+                  isDark ? 'text-stone-400' : 'text-stone-600'
+                }`}>
+                  With over 2 years of experience, I focus on creating scalable web
+                  and mobile applications that solve real-world problems.
                 </p>
-                <p className="text-gray-600 leading-relaxed mb-4">
-                  I love turning complex problems into simple, beautiful solutions. Whether it's optimizing
-                  performance, integrating APIs, or crafting intuitive user experiences, I'm always excited
-                  to take on new challenges.
+                <p className={`text-lg mb-8 leading-relaxed font-light transition-colors duration-300 ${
+                  isDark ? 'text-stone-400' : 'text-stone-600'
+                }`}>
+                  Currently working at KuchNaya Technolabs, where I am working on our flagship product
+                  <span className="inline-flex items-center gap-1 mx-1" style={{ verticalAlign: 'middle' }}>
+                    <strong><em>"VidyBack</em></strong>
+                    <img src={vidybackLogo} alt="VidyBack" className="inline h-5 w-5 rounded" style={{ verticalAlign: 'middle' }} />
+                  "</span>.
                 </p>
-                <div className="flex items-center gap-2 text-gray-500 pt-4 border-t border-gray-200">
-                  <MapPin size={20} className="text-blue-600" />
-                  <span>{portfolioData.location}</span>
-                </div>
-              </div>
 
-              <div className="bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl p-8 shadow-lg text-white">
-                <h3 className="text-2xl font-bold mb-4">What I Love</h3>
-                <ul className="space-y-3">
-                  <li className="flex items-start gap-2">
-                    <span className="text-blue-200">▹</span>
-                    <span>Building products that make a real impact</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-blue-200">▹</span>
-                    <span>Exploring cutting-edge technologies</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-blue-200">▹</span>
-                    <span>Collaborating with talented teams</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-blue-200">▹</span>
-                    <span>Continuous learning and growth</span>
-                  </li>
-                </ul>
+                <button
+                  onClick={() => {
+                    const link = document.createElement("a");
+                    link.href = pdfUrlPath;
+                    link.download = "Vishnu_Nair_Resume.pdf";
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                  }}
+                  className={`inline-flex items-center gap-2 px-8 py-4 rounded-full text-sm uppercase tracking-wider transition-colors duration-300 ${
+                    isDark
+                      ? 'bg-stone-100 text-stone-900 hover:bg-stone-200'
+                      : 'bg-stone-900 text-stone-50 hover:bg-stone-800'
+                  }`}
+                >
+                  <Download size={16} />
+                  Resume
+                </button>
               </div>
             </div>
 
-            {/* Right Column - Skills */}
-            <div>
-              <div className="bg-white rounded-2xl p-8 shadow-lg">
-                <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
-                  <Code className="text-purple-600" size={28} />
-                  Technical Skills
-                </h3>
-                <div className="space-y-6">
-                  {Object.entries(portfolioData.skills).map(([category, skills]) => (
-                    <div key={category}>
-                      <h4 className="text-sm font-bold text-gray-500 uppercase mb-3">
-                        {category}
-                      </h4>
-                      <div className="flex flex-wrap gap-2">
-                        {skills.map((skill, index) => (
-                          <span
-                            key={index}
-                            className="px-4 py-2 bg-gradient-to-r from-blue-50 to-purple-50 text-gray-700 rounded-lg text-sm font-medium border border-blue-100 hover:border-blue-300 hover:shadow-md transition-all duration-300"
-                          >
-                            {skill}
-                          </span>
-                        ))}
+            {/* Right Column - Skills & Experience */}
+            <div className="space-y-12">
+              {/* Skills */}
+              <div>
+                <h4 className={`text-xs uppercase tracking-wider mb-6 transition-colors duration-300 ${
+                  isDark ? 'text-stone-500' : 'text-stone-500'
+                }`}>
+                  Skills
+                </h4>
+                <div className="flex flex-wrap gap-3">
+                  {portfolioData.skills.map((skill, idx) => (
+                    <span
+                      key={idx}
+                      className={`px-4 py-2 rounded-full text-sm transition-colors duration-300 ${
+                        isDark
+                          ? 'bg-stone-700 text-stone-100'
+                          : 'bg-stone-200 text-stone-900'
+                      }`}
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Experience */}
+              <div>
+                <h4 className={`text-xs uppercase tracking-wider mb-6 transition-colors duration-300 ${
+                  isDark ? 'text-stone-500' : 'text-stone-500'
+                }`}>
+                  Experience
+                </h4>
+                <div className="space-y-8">
+                  {portfolioData.experience.map((exp, idx) => (
+                    <div key={idx} className={`border-l-2 pl-6 transition-colors duration-300 ${
+                      isDark ? 'border-stone-600' : 'border-stone-300'
+                    }`}>
+                      <div className={`text-lg font-medium transition-colors duration-300 ${
+                        isDark ? 'text-stone-100' : 'text-stone-900'
+                      }`}>
+                        {exp.position}
                       </div>
+                      <div className={`text-sm mb-3 transition-colors duration-300 ${
+                        isDark ? 'text-stone-400' : 'text-stone-600'
+                      }`}>
+                        {exp.company} · {exp.duration}
+                      </div>
+                      <ul className="space-y-2">
+                        {exp.achievements.map((achievement, aidx) => (
+                          <li
+                            key={aidx}
+                            className={`text-sm flex items-start gap-2 transition-colors duration-300 ${
+                              isDark ? 'text-stone-400' : 'text-stone-600'
+                            }`}
+                          >
+                            <span className={`mt-1 transition-colors duration-300 ${
+                              isDark ? 'text-stone-600' : 'text-stone-400'
+                            }`}>—</span>
+                            <span>{achievement}</span>
+                          </li>
+                        ))}
+                      </ul>
                     </div>
                   ))}
                 </div>
@@ -395,68 +404,98 @@ const Portfolio = () => {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="py-20 px-4 bg-white">
+      <section id="projects" className="py-24 px-6 lg:px-12">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold text-center text-gray-900 mb-4">
-            Featured Projects
+          <h2 className={`text-sm uppercase tracking-wider mb-16 transition-colors duration-300 ${
+            isDark ? 'text-stone-500' : 'text-stone-500'
+          }`}>
+            Projects
           </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto mb-16"></div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {portfolioData.projects.map((project) => (
+          <div className="space-y-32">
+            {portfolioData.projects.map((project, index) => (
               <div
                 key={project.id}
-                className="bg-gradient-to-br from-slate-50 to-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100"
+                className="grid lg:grid-cols-2 gap-12 items-center"
+                style={{
+                  flexDirection: index % 2 === 0 ? "row" : "row-reverse",
+                }}
               >
-                <div className="relative h-56 overflow-hidden bg-gradient-to-br from-blue-100 to-purple-100">
+                {/* Project Image */}
+                <div
+                  className="relative aspect-[16/10] max-w-md rounded-2xl overflow-hidden group cursor-pointer"
+                >
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-contain transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div
+                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                    style={{
+                      background: isDark
+                        ? `linear-gradient(135deg, ${project.colorScheme.accent}00 0%, ${project.colorScheme.accent}60 100%)`
+                        : `linear-gradient(135deg, ${project.colorScheme.bg}00 0%, ${project.colorScheme.bg}80 100%)`,
+                    }}
                   />
                 </div>
 
-                <div className="p-6">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-3">
+                {/* Project Info */}
+                <div className={index % 2 === 0 ? "lg:pl-12" : "lg:pr-12"}>
+                  <div className="flex items-center gap-4 mb-4">
+                    <span
+                      className="text-xs uppercase tracking-wider font-medium"
+                      style={{ color: project.colorScheme.accent }}
+                    >
+                      {project.type}
+                    </span>
+                    <span className={`text-xs transition-colors duration-300 ${isDark ? 'text-stone-500' : 'text-stone-400'}`}>
+                      {project.year}
+                    </span>
+                  </div>
+
+                  <h3 className={`text-5xl font-light tracking-tight mb-6 transition-colors duration-300 ${
+                    isDark ? 'text-stone-100' : 'text-stone-900'
+                  }`}>
                     {project.title}
                   </h3>
-                  <p className="text-gray-600 mb-4 leading-relaxed">
+
+                  <p className={`text-lg mb-8 leading-relaxed font-light transition-colors duration-300 ${
+                    isDark ? 'text-stone-400' : 'text-stone-600'
+                  }`}>
                     {project.description}
                   </p>
 
-                  {/* Highlights */}
-                  <div className="mb-4 space-y-1">
-                    {project.highlights.map((highlight, idx) => (
-                      <div key={idx} className="flex items-center gap-2 text-sm text-gray-600">
-                        <span className="text-blue-600">✓</span>
-                        <span>{highlight}</span>
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Tech Stack */}
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.tech.map((tech, index) => (
+                  <div className="flex flex-wrap gap-2 mb-8">
+                    {project.tech.map((tech, idx) => (
                       <span
-                        key={index}
-                        className="px-3 py-1 bg-blue-50 text-blue-700 rounded-lg text-xs font-medium"
+                        key={idx}
+                        className="px-4 py-2 text-xs uppercase tracking-wider rounded-full border transition-colors duration-300"
+                        style={{
+                          borderColor: project.colorScheme.accent,
+                          color: project.colorScheme.accent,
+                        }}
                       >
                         {tech}
                       </span>
                     ))}
                   </div>
 
-                  {/* Links */}
-                  <div className="flex gap-3 pt-4 border-t border-gray-200">
-                    {project.github && (
+                  <div className="flex gap-6">
+                    {project.link && (
                       <a
-                        href={project.github}
+                        href={project.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-1 text-gray-600 hover:text-blue-600 transition-colors"
+                        className={`flex items-center gap-2 text-sm uppercase tracking-wider hover:gap-3 transition-all group ${
+                          isDark ? 'text-stone-100' : 'text-stone-900'
+                        }`}
                       >
-                        <Code size={16} />
-                        <span className="text-sm font-medium">Code</span>
+                        Play Store
+                        <ArrowUpRight
+                          size={16}
+                          className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
+                        />
                       </a>
                     )}
                     {project.live && (
@@ -464,10 +503,31 @@ const Portfolio = () => {
                         href={project.live}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-1 text-gray-600 hover:text-blue-600 transition-colors"
+                        className={`flex items-center gap-2 text-sm uppercase tracking-wider hover:gap-3 transition-all group ${
+                          isDark ? 'text-stone-100' : 'text-stone-900'
+                        }`}
                       >
-                        <ExternalLink size={16} />
-                        <span className="text-sm font-medium">Live</span>
+                        View Live
+                        <ArrowUpRight
+                          size={16}
+                          className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
+                        />
+                      </a>
+                    )}
+                    {project.github && (
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`flex items-center gap-2 text-sm uppercase tracking-wider hover:gap-3 transition-all group ${
+                          isDark ? 'text-stone-100' : 'text-stone-900'
+                        }`}
+                      >
+                        GitHub
+                        <ArrowUpRight
+                          size={16}
+                          className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
+                        />
                       </a>
                     )}
                     {project.video && (
@@ -475,10 +535,15 @@ const Portfolio = () => {
                         href={project.video}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-1 text-gray-600 hover:text-blue-600 transition-colors"
+                        className={`flex items-center gap-2 text-sm uppercase tracking-wider hover:gap-3 transition-all group ${
+                          isDark ? 'text-stone-100' : 'text-stone-900'
+                        }`}
                       >
-                        <Video size={16} />
-                        <span className="text-sm font-medium">Demo</span>
+                        Demo
+                        <ArrowUpRight
+                          size={16}
+                          className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
+                        />
                       </a>
                     )}
                   </div>
@@ -489,115 +554,116 @@ const Portfolio = () => {
         </div>
       </section>
 
-      {/* Experience Section */}
-      <section id="experience" className="py-20 px-4">
-        <div className="max-w-5xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold text-center text-gray-900 mb-4">
-            Work Experience
-          </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto mb-16"></div>
-
-          <div className="space-y-8">
-            {portfolioData.experience.map((exp, index) => {
-              const Icon = exp.icon;
-              return (
-                <div
-                  key={index}
-                  className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100"
-                >
-                  <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
-                    <div className="flex items-start gap-4 mb-4 md:mb-0">
-                      <div className="p-3 bg-gradient-to-br from-blue-500 to-purple-500 rounded-xl">
-                        <Icon className="text-white" size={24} />
-                      </div>
-                      <div>
-                        <h3 className="text-2xl font-bold text-gray-900">
-                          {exp.position}
-                        </h3>
-                        <p className="text-lg text-gray-600 font-medium">
-                          {exp.company}
-                        </p>
-                      </div>
-                    </div>
-                    <span className="inline-block px-4 py-2 bg-blue-50 text-blue-600 rounded-full text-sm font-medium">
-                      {exp.duration}
-                    </span>
-                  </div>
-
-                  <div className="space-y-3">
-                    {exp.highlights.map((highlight, idx) => (
-                      <div key={idx} className="flex items-start gap-3">
-                        <span className="text-blue-600 mt-1">▹</span>
-                        <p className="text-gray-600 leading-relaxed">{highlight}</p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
       {/* Contact Section */}
-      <section id="contact" className="py-20 px-4 bg-gradient-to-br from-blue-600 to-purple-600">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Let's Work Together
+      <section id="contact" className="py-24 px-6 lg:px-12">
+        <div className="max-w-7xl mx-auto">
+          <h2 className={`text-sm uppercase tracking-wider mb-16 transition-colors duration-300 ${
+            isDark ? 'text-stone-500' : 'text-stone-500'
+          }`}>
+            Get in Touch
           </h2>
-          <div className="w-20 h-1 bg-white mx-auto mb-8"></div>
 
-          <p className="text-xl text-blue-100 mb-12 max-w-2xl mx-auto leading-relaxed">
-            I'm always interested in hearing about new projects and opportunities.
-            Whether you have a question or just want to say hi, feel free to reach out!
-          </p>
+          <div className="grid lg:grid-cols-2 gap-16 items-start">
+            <div>
+              <h3 className={`text-5xl font-light tracking-tight mb-8 leading-tight transition-colors duration-300 ${
+                isDark ? 'text-stone-100' : 'text-stone-900'
+              }`}>
+                Let's work
+                <br />
+                together
+              </h3>
+              <p className={`text-lg font-light leading-relaxed transition-colors duration-300 ${
+                isDark ? 'text-stone-400' : 'text-stone-600'
+              }`}>
+                I'm always interested in hearing about new projects and
+                opportunities. Feel free to reach out.
+              </p>
+            </div>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-            <a
-              href={`mailto:${portfolioData.email}`}
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-blue-600 rounded-xl font-semibold hover:shadow-xl transform hover:scale-105 transition-all duration-300"
-            >
-              <Mail size={20} />
-              Send Email
-            </a>
-            <a
-              href={`tel:${portfolioData.phone}`}
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-transparent border-2 border-white text-white rounded-xl font-semibold hover:bg-white hover:text-blue-600 transform hover:scale-105 transition-all duration-300"
-            >
-              <Phone size={20} />
-              Call Me
-            </a>
-          </div>
+            <div className="space-y-8">
+              <a
+                href={`mailto:${portfolioData.email}`}
+                className="group block"
+              >
+                <div className={`text-xs uppercase tracking-wider mb-2 transition-colors duration-300 ${
+                  isDark ? 'text-stone-500' : 'text-stone-500'
+                }`}>
+                  Email
+                </div>
+                <div className={`text-2xl transition-colors flex items-center gap-2 ${
+                  isDark
+                    ? 'text-stone-100 group-hover:text-stone-400'
+                    : 'text-stone-900 group-hover:text-stone-600'
+                }`}>
+                  {portfolioData.email}
+                  <ArrowUpRight
+                    size={20}
+                    className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"
+                  />
+                </div>
+              </a>
 
-          <div className="flex justify-center gap-6">
-            <a
-              href={portfolioData.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-4 bg-white/10 backdrop-blur-sm rounded-full hover:bg-white/20 transform hover:scale-110 transition-all duration-300"
-              aria-label="GitHub"
-            >
-              <Github size={24} className="text-white" />
-            </a>
-            <a
-              href={portfolioData.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-4 bg-white/10 backdrop-blur-sm rounded-full hover:bg-white/20 transform hover:scale-110 transition-all duration-300"
-              aria-label="LinkedIn"
-            >
-              <Linkedin size={24} className="text-white" />
-            </a>
+              <div className={`pt-6 border-t transition-colors duration-300 ${
+                isDark ? 'border-stone-700' : 'border-stone-200'
+              }`}>
+                <div className={`text-xs uppercase tracking-wider mb-4 transition-colors duration-300 ${
+                  isDark ? 'text-stone-500' : 'text-stone-500'
+                }`}>
+                  Social
+                </div>
+                <div className="flex gap-6">
+                  <a
+                    href={portfolioData.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`transition-colors duration-300 ${
+                      isDark
+                        ? 'text-stone-100 hover:text-stone-400'
+                        : 'text-stone-900 hover:text-stone-600'
+                    }`}
+                  >
+                    <Github size={24} />
+                  </a>
+                  <a
+                    href={portfolioData.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`transition-colors duration-300 ${
+                      isDark
+                        ? 'text-stone-100 hover:text-stone-400'
+                        : 'text-stone-900 hover:text-stone-600'
+                    }`}
+                  >
+                    <Linkedin size={24} />
+                  </a>
+                  <a
+                    href={`mailto:${portfolioData.email}`}
+                    className={`transition-colors duration-300 ${
+                      isDark
+                        ? 'text-stone-100 hover:text-stone-400'
+                        : 'text-stone-900 hover:text-stone-600'
+                    }`}
+                  >
+                    <Mail size={24} />
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="py-8 px-4 bg-gray-900 text-center">
-        <div className="max-w-4xl mx-auto">
-          <p className="text-gray-400">
-            © {new Date().getFullYear()} Vishnu Nair. Crafted with passion.
-          </p>
+      <footer className={`py-12 px-6 lg:px-12 border-t transition-colors duration-300 ${
+        isDark ? 'border-stone-700' : 'border-stone-200'
+      }`}>
+        <div className={`max-w-7xl mx-auto flex justify-between items-center text-sm transition-colors duration-300 ${
+          isDark ? 'text-stone-500' : 'text-stone-500'
+        }`}>
+          <div>© {new Date().getFullYear()} Vishnu Nair</div>
+          <div className="text-xs uppercase tracking-wider">
+            Mumbai, India
+          </div>
         </div>
       </footer>
     </div>
